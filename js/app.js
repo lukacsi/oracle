@@ -132,6 +132,11 @@ async function init() {
       ask();
     }
   });
+
+  // Rovásírás toggle
+  document.getElementById('rovasToggle').addEventListener('change', (e) => {
+    document.body.classList.toggle('rovas-mode', e.target.checked);
+  });
 }
 
 init();

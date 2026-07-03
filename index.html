@@ -4,26 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Magyar Jósda — oracle.gyoma.org</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23050204'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23d4af37' opacity='.75'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+Old+Hungarian&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="mystical-bg">
+    <canvas id="particles"></canvas>
     <div class="stars"></div>
     <div class="fog"></div>
+  </div>
+
+  <div class="rovas-toggle">
+    <label class="switch">
+      <input type="checkbox" id="rovasToggle">
+      <span class="slider"></span>
+    </label>
+    <span class="toggle-label" title="Rovásírás mód">𐲢𐲞𐲩𐲀𐲯</span>
   </div>
   
   <div class="container">
     <header>
       <div class="motif-top"></div>
-      <h1>A Magyar Jósda</h1>
-      <p class="subtitle">Minden kérdésedre egy ősi szólás a válasz</p>
+      <h1 id="mainTitle"><span class="latin">A Magyar Jósda</span><span class="runic" aria-hidden="true">𐲀 𐲘𐲀𐲌𐲀𐲢 𐲖𐲞𐲯𐲇𐲀</span></h1>
+      <p class="subtitle"><span class="latin">A régi szavak mindent megmagyaráznak</span><span class="runic" aria-hidden="true">𐲀 𐲢𐲉𐲌𐲉 𐲯𐲀𐲮𐲀𐲏 𐲘𐲉𐲜𐲇𐲄𐲜𐲄 𐲘𐲄𐲌𐲘𐲀𐲌𐲌𐲀𐲢𐲀𐲮𐲜𐲀𐲏</span></p>
     </header>
 
     <main>
       <div class="orb-container">
+        <div class="orb-ring">
+          <svg viewBox="0 0 300 300" width="100%" height="100%">
+            <path id="curve" d="M 150,150 m -120,0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="transparent" />
+            <text>
+              <textPath href="#curve" startOffset="0%">
+                𐲀 𐲎 𐲀 𐲇 𐲋 𐲀 𐲔 𐲋 𐲑 𐲕 𐲄 𐲀 𐲀 𐲎 𐲀 𐲇 𐲋 𐲀 𐲔 𐲋 𐲑 𐲕 𐲄 𐲀
+              </textPath>
+            </text>
+          </svg>
+        </div>
         <div class="orb" id="orb">
           <div class="orb-glare"></div>
           <div class="orb-core"></div>
