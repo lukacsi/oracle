@@ -6,21 +6,52 @@
   <title>A Magyar Jósda — oracle.gyoma.org</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="mystical-bg">
+    <div class="stars"></div>
+    <div class="fog"></div>
+  </div>
+  
   <div class="container">
-    <h1>A Magyar Jósda</h1>
-    <p class="subtitle">— minden kérdésedre egy szólás a válasz —</p>
-    <div class="orb" id="orb"></div>
-    <div class="question-box">
-      <input type="text" id="question" placeholder="Mi gyötör téged, vándor?" autocomplete="off" maxlength="200">
-    </div>
-    <button class="ask-btn" id="askBtn">Kérdezd a Jósdát</button>
-    <div class="answer" id="answer"></div>
-    <button class="again-btn" id="againBtn">még egy kérdés...</button>
-    <footer id="footer">oracle.gyoma.org</footer>
+    <header>
+      <div class="motif-top"></div>
+      <h1>A Magyar Jósda</h1>
+      <p class="subtitle">Minden kérdésedre egy ősi szólás a válasz</p>
+    </header>
+
+    <main>
+      <div class="orb-container">
+        <div class="orb" id="orb">
+          <div class="orb-glare"></div>
+          <div class="orb-core"></div>
+          <div class="orb-smoke"></div>
+        </div>
+        <div class="orb-shadow"></div>
+      </div>
+
+      <div class="interaction-area">
+        <div class="question-box">
+          <input type="text" id="question" placeholder="Mi gyötör téged, vándor?" autocomplete="off" maxlength="200">
+          <div class="input-line"></div>
+        </div>
+        <button class="ask-btn" id="askBtn">
+          <span class="btn-text">Kérdezd a Jósdát</span>
+          <span class="btn-glow"></span>
+        </button>
+      </div>
+
+      <div class="answer-container" id="answerContainer">
+        <div class="answer" id="answer"></div>
+        <button class="again-btn" id="againBtn">Újabb kérdést teszek fel...</button>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <p>oracle.gyoma.org</p>
+    </footer>
   </div>
   <script src="js/app.js"></script>
 </body>
