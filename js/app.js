@@ -76,7 +76,7 @@ function ask() {
       orb.classList.add('glowing');
       answerContainer.classList.add('visible');
       btn.disabled = false;
-    }, 500);
+    }, 800);
     
   }, 1600);
 }
