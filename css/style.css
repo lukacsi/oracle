@@ -368,11 +368,10 @@ body.rovas-mode .subtitle .latin { display: none; }
 }
 
 .orb.shaking {
-  animation: shake 0.4s ease-in-out infinite;
-  box-shadow: 
-    inset 0 0 100px rgba(212,175,55,0.4),
-    0 0 80px rgba(212,175,55,0.6),
-    0 0 150px rgba(102, 0, 17, 0.8);
+  animation: 
+    shakeA 0.3s ease-in-out infinite,
+    shakeB 0.5s ease-in-out infinite reverse,
+    orbGlowBuild 1.6s ease-in forwards;
   border-color: rgba(212,175,55,0.8);
 }
 
@@ -381,7 +380,7 @@ body.rovas-mode .subtitle .latin { display: none; }
   height: 90%;
   opacity: 1;
   background: radial-gradient(circle, var(--gold-light) 0%, var(--orb-core) 50%, transparent 80%);
-  animation: smokeSpin 1s linear infinite;
+  animation: coreFlare 0.6s ease-in-out infinite alternate;
 }
 
 .orb.shaking .orb-smoke {
@@ -389,17 +388,38 @@ body.rovas-mode .subtitle .latin { display: none; }
   opacity: 0.9;
 }
 
+.orb.shaking .orb-glare {
+  animation: glareFlicker 0.2s ease-in-out infinite alternate;
+}
+
+.orb.settling {
+  animation: settleFloat 0.8s ease-out forwards;
+  border-color: rgba(212,175,55,0.5);
+}
+
+.orb.settling .orb-core {
+  width: 70%;
+  height: 70%;
+  opacity: 0.8;
+  background: radial-gradient(circle, var(--orb-core) 0%, rgba(212,175,55,0.4) 40%, transparent 70%);
+  animation: coreSettle 0.8s ease-out forwards;
+}
+
+.orb.settling .orb-smoke {
+  animation: smokeSpin 4s linear infinite;
+  opacity: 0.6;
+}
+
 .orb.glowing {
-  box-shadow: 
-    inset 0 0 60px rgba(212,175,55,0.3),
-    0 0 100px rgba(212,175,55,0.4);
+  animation: orbGlowIdle 4s ease-in-out infinite;
   border-color: rgba(212,175,55,0.5);
 }
 
 .orb.glowing .orb-core {
-  opacity: 0.9;
-  width: 70%;
-  height: 70%;
+  opacity: 0.85;
+  width: 65%;
+  height: 65%;
+  animation: coreBreath 4s ease-in-out infinite;
 }
 
 @keyframes shake {
@@ -407,6 +427,44 @@ body.rovas-mode .subtitle .latin { display: none; }
   25% { transform: translate(-4px, 3px) rotate(-2deg); }
   50% { transform: translate(4px, -3px) rotate(2deg); }
   75% { transform: translate(-3px, 4px) rotate(-1deg); }
+}
+@keyframes shakeA {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-5px, 2px) rotate(-2.5deg); }
+  40% { transform: translate(3px, -4px) rotate(1.5deg); }
+  60% { transform: translate(-2px, 5px) rotate(-1deg); }
+  80% { transform: translate(4px, -2px) rotate(2deg); }
+}
+@keyframes shakeB {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(3px, -3px) rotate(1deg); }
+  50% { transform: translate(-4px, 2px) rotate(-2deg); }
+  75% { transform: translate(2px, -4px) rotate(1.5deg); }
+}
+@keyframes orbGlowBuild {
+  0% { box-shadow: inset 0 0 40px rgba(212,175,55,0.2), inset -10px -10px 30px rgba(0,0,0,0.9), inset 10px 10px 30px rgba(255,255,255,0.1), 0 0 60px rgba(102,0,17,0.6), 0 0 100px rgba(212,175,55,0.2); }
+  50% { box-shadow: inset 0 0 80px rgba(212,175,55,0.4), inset -10px -10px 30px rgba(0,0,0,0.8), inset 10px 10px 30px rgba(255,255,255,0.15), 0 0 100px rgba(102,0,17,0.8), 0 0 150px rgba(212,175,55,0.4); }
+  100% { box-shadow: inset 0 0 60px rgba(212,175,55,0.3), inset -10px -10px 30px rgba(0,0,0,0.85), inset 10px 10px 30px rgba(255,255,255,0.12), 0 0 80px rgba(212,175,55,0.35); }
+}
+@keyframes coreFlare {
+  0% { filter: blur(10px) brightness(1); }
+  100% { filter: blur(12px) brightness(1.4); }
+}
+@keyframes glareFlicker {
+  0% { opacity: 1; transform: rotate(-30deg) scale(1); }
+  100% { opacity: 0.7; transform: rotate(-28deg) scale(1.08); }
+}
+@keyframes settleFloat {
+  0% { transform: translateY(-5px); }
+  100% { transform: translateY(-10px); }
+}
+@keyframes coreSettle {
+  0% { filter: blur(12px) brightness(1.3); opacity: 1; }
+  100% { filter: blur(10px) brightness(1); opacity: 0.85; }
+}
+@keyframes orbGlowIdle {
+  0%, 100% { box-shadow: inset 0 0 50px rgba(212,175,55,0.25), inset -10px -10px 30px rgba(0,0,0,0.85), inset 10px 10px 30px rgba(255,255,255,0.12), 0 0 70px rgba(212,175,55,0.3); }
+  50% { box-shadow: inset 0 0 60px rgba(212,175,55,0.3), inset -10px -10px 30px rgba(0,0,0,0.85), inset 10px 10px 30px rgba(255,255,255,0.12), 0 0 90px rgba(212,175,55,0.4); }
 }
 
 .interaction-area {

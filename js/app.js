@@ -46,6 +46,7 @@ function ask() {
 
   setTimeout(() => {
     orb.classList.remove('shaking');
+    orb.classList.add('settling');
     interactionArea.style.display = 'none';
 
     let idx;
@@ -69,14 +70,13 @@ function ask() {
       <div class="answer-meaning">${safeMeaning}</div>
     `;
 
-    // Show answer
     answerContainer.style.display = 'flex';
-    // Small delay to allow display:flex to apply before adding opacity class for transition
     setTimeout(() => {
-      answerContainer.classList.add('visible');
+      orb.classList.remove('settling');
       orb.classList.add('glowing');
+      answerContainer.classList.add('visible');
       btn.disabled = false;
-    }, 50);
+    }, 500);
     
   }, 1600);
 }
@@ -87,7 +87,7 @@ function reset() {
   const orb = document.getElementById('orb');
 
   answerContainer.classList.remove('visible');
-  orb.classList.remove('glowing');
+  orb.classList.remove('glowing', 'settling');
   
   setTimeout(() => {
     answerContainer.style.display = 'none';
