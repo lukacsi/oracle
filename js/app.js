@@ -36,7 +36,8 @@
     history: $('history'),
     historyList: $('historyList'),
     rovasToggle: $('rovasToggle'),
-    footer: $('footer')
+    footer: $('footer'),
+    footerText: $('footerText')
   };
 
   const prefersReducedMotion =
@@ -480,11 +481,11 @@
       const data = await res.json();
       proverbs.push(...data);
       const count = proverbs.length.toLocaleString('hu-HU');
-      els.footer.querySelector('p').textContent =
+      els.footerText.textContent =
         'oracle.gyoma.org · ' + count + ' szólás a birtokunkban';
       els.askBtn.disabled = false;
     } catch (e) {
-      els.footer.querySelector('p').textContent =
+      els.footerText.textContent =
         'oracle.gyoma.org · a szólások nem töltődtek be';
       els.askBtn.querySelector('.btn-text').textContent = 'A jósda hallgat…';
       return;
