@@ -4,75 +4,136 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Magyar Jósda — oracle.gyoma.org</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23050204'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23d4af37' opacity='.75'/%3E%3C/svg%3E">
+  <meta name="description" content="Kérdezd a Magyar Jósdát: 12 679 magyar szólás és közmondás válaszol kérdéseidre.">
+  <meta name="theme-color" content="#06040f">
+  <meta property="og:title" content="A Magyar Jósda">
+  <meta property="og:description" content="A régi szavak mindent megmagyaráznak — kérdezz, és egy magyar közmondás válaszol.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oracle.gyoma.org">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%2306040f'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23e0b25a' opacity='.85'/%3E%3Ccircle cx='26' cy='26' r='5' fill='%23fff' opacity='.5'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+Old+Hungarian&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Noto+Sans+Old+Hungarian&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <div class="mystical-bg">
-    <canvas id="particles"></canvas>
-    <div class="stars"></div>
-    <div class="fog"></div>
+<body data-phase="idle">
+
+  <!-- Atmosphere -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Rovásírás mode -->
+  <div class="rovas-toggle">
+    <span class="toggle-label" id="rovasLabel" title="Rovásírás mód">𐲢𐲛𐲮𐲁𐲤</span>
+    <button class="switch" id="rovasToggle" role="switch" aria-checked="false" aria-labelledby="rovasLabel">
+      <span class="switch-knob"></span>
+    </button>
   </div>
 
-  <div class="rovas-toggle">
-    <label class="switch">
-      <input type="checkbox" id="rovasToggle">
-      <span class="slider"></span>
-    </label>
-    <span class="toggle-label" title="Rovásírás mód">𐲢𐲞𐲩𐲀𐲯</span>
-  </div>
-  
-  <div class="container">
-    <header>
-      <div class="motif-top"></div>
-      <h1 id="mainTitle"><span class="latin">A Magyar Jósda</span><span class="runic" aria-hidden="true">𐲀 𐲘𐲀𐲌𐲀𐲢 𐲖𐲞𐲯𐲇𐲀</span></h1>
-      <p class="subtitle"><span class="latin">A régi szavak mindent megmagyaráznak</span><span class="runic" aria-hidden="true">𐲀 𐲢𐲉𐲌𐲉 𐲯𐲀𐲮𐲀𐲏 𐲘𐲉𐲜𐲇𐲄𐲜𐲄 𐲘𐲄𐲌𐲘𐲀𐲌𐲌𐲀𐲢𐲀𐲮𐲜𐲀𐲏</span></p>
+  <div class="page">
+    <header class="site-header">
+      <div class="ornament ornament-top" aria-hidden="true">
+        <svg viewBox="0 0 220 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="12" x2="86" y2="12" stroke="currentColor" stroke-width="1" opacity=".45"/>
+          <line x1="134" y1="12" x2="220" y2="12" stroke="currentColor" stroke-width="1" opacity=".45"/>
+          <path d="M110 3 L119 12 L110 21 L101 12 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <circle cx="110" cy="12" r="2.4" fill="currentColor"/>
+          <circle cx="92" cy="12" r="1.6" fill="currentColor" opacity=".6"/>
+          <circle cx="128" cy="12" r="1.6" fill="currentColor" opacity=".6"/>
+        </svg>
+      </div>
+      <h1 id="mainTitle">
+        <span class="latin">A Magyar Jósda</span>
+        <span class="runic" aria-hidden="true">𐲀 𐲘𐲀𐲎𐲀𐲢 𐲒𐲜𐲤𐲇𐲀</span>
+      </h1>
+      <p class="subtitle">
+        <span class="latin">A régi szavak mindent megmagyaráznak</span>
+        <span class="runic" aria-hidden="true">𐳀 𐳢𐳋𐳍𐳐 𐳥𐳀𐳮𐳀𐳓 𐳘𐳐𐳙𐳇𐳉𐳙𐳦 𐳘𐳉𐳍𐳘𐳀𐳍𐳗𐳀𐳢𐳁𐳯𐳙𐳀𐳓</span>
+      </p>
     </header>
 
     <main>
-      <div class="orb-container">
-        <div class="orb-ring">
-          <svg viewBox="0 0 300 300" width="100%" height="100%">
-            <path id="curve" d="M 150,150 m -120,0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="transparent" />
-            <text>
-              <textPath href="#curve" startOffset="0%">
-                𐲀 𐲎 𐲀 𐲇 𐲋 𐲀 𐲔 𐲋 𐲑 𐲕 𐲄 𐲀 𐲀 𐲎 𐲀 𐲇 𐲋 𐲀 𐲔 𐲋 𐲑 𐲕 𐲄 𐲀
-              </textPath>
-            </text>
+      <!-- The orb -->
+      <div class="orb-stage">
+        <div class="rune-ring ring-outer" aria-hidden="true">
+          <svg viewBox="0 0 340 340">
+            <defs>
+              <path id="runePathOuter" d="M170,170 m-152,0 a152,152 0 1,1 304,0 a152,152 0 1,1 -304,0"/>
+            </defs>
+            <text><textPath href="#runePathOuter">𐳀 𐳒𐳞𐳮𐳟 𐳘𐳉𐳍 𐳮𐳀𐳎𐳛𐳙 𐳑𐳢𐳮𐳀 𐳀 𐳆𐳐𐳖𐳖𐳀𐳍𐳛𐳓𐳂𐳀𐳙 · 𐳀 𐳒𐳞𐳮𐳟 𐳘𐳉𐳍 𐳮𐳀𐳎𐳛𐳙 𐳑𐳢𐳮𐳀 𐳀 𐳆𐳐𐳖𐳖𐳀𐳍𐳛𐳓𐳂𐳀𐳙 ·</textPath></text>
           </svg>
         </div>
-        <div class="orb" id="orb">
-          <div class="orb-glare"></div>
-          <div class="orb-core"></div>
-          <div class="orb-smoke"></div>
+        <div class="rune-ring ring-inner" aria-hidden="true">
+          <svg viewBox="0 0 340 340">
+            <defs>
+              <path id="runePathInner" d="M170,170 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/>
+            </defs>
+            <text><textPath href="#runePathInner">𐳓𐳋𐳢𐳇𐳉𐳯𐳯 𐳋𐳤 𐳮𐳁𐳖𐳀𐳥𐳦 𐳓𐳀𐳠𐳥 · 𐳓𐳋𐳢𐳇𐳉𐳯𐳯 𐳋𐳤 𐳮𐳁𐳖𐳀𐳥𐳦 𐳓𐳀𐳠𐳥 ·</textPath></text>
+          </svg>
         </div>
-        <div class="orb-shadow"></div>
-      </div>
 
-      <div class="interaction-area">
-        <div class="question-box">
-          <input type="text" id="question" placeholder="Mi gyötör téged, vándor?" autocomplete="off" maxlength="200">
-          <div class="input-line"></div>
-        </div>
-        <button class="ask-btn" id="askBtn">
-          <span class="btn-text">Kérdezd a Jósdát</span>
-          <span class="btn-glow"></span>
+        <button class="orb" id="orb" type="button" aria-label="Kérdezd a Jósdát">
+          <span class="orb-nebula" aria-hidden="true"></span>
+          <span class="orb-swirl" aria-hidden="true"></span>
+          <span class="orb-core" aria-hidden="true"></span>
+          <span class="orb-glare" aria-hidden="true"></span>
+          <span class="orb-rim" aria-hidden="true"></span>
         </button>
+        <div class="orb-shadow" aria-hidden="true"></div>
       </div>
 
-      <div class="answer-container" id="answerContainer">
-        <div class="answer" id="answer"></div>
-        <button class="again-btn" id="againBtn">Újabb kérdést teszek fel...</button>
+      <p class="orb-status" id="orbStatus" role="status" aria-live="polite"></p>
+
+      <!-- Question / answer console -->
+      <div class="console">
+        <form class="ask-panel" id="askForm" autocomplete="off">
+          <div class="question-box">
+            <input type="text" id="question" name="question"
+                   placeholder="Mi gyötör téged, vándor?"
+                   maxlength="200" autocomplete="off" spellcheck="false">
+            <div class="input-line" aria-hidden="true"></div>
+          </div>
+          <button class="ask-btn" id="askBtn" type="submit" disabled>
+            <span class="btn-text">Kérdezd a Jósdát</span>
+          </button>
+        </form>
+
+        <section class="answer-panel" id="answerPanel" hidden aria-label="A jóslat">
+          <div class="answer-card" id="answerCard">
+            <p class="answer-intro" id="answerIntro"></p>
+            <blockquote class="answer-text" id="answerText"></blockquote>
+            <div class="motif-divider" aria-hidden="true">
+              <svg viewBox="0 0 160 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="13" x2="52" y2="13" stroke="currentColor" stroke-width="1" opacity=".5"/>
+                <line x1="108" y1="13" x2="160" y2="13" stroke="currentColor" stroke-width="1" opacity=".5"/>
+                <path d="M80 3 C73 12 64 16 58 15 C64 20 74 19 80 12 C86 19 96 20 102 15 C96 16 87 12 80 3 Z" fill="currentColor" opacity=".85"/>
+                <circle cx="80" cy="20" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <p class="answer-meaning" id="answerMeaning"></p>
+            <div class="answer-actions">
+              <button class="action-btn primary" id="againBtn" type="button">Új kérdés</button>
+              <button class="action-btn" id="redrawBtn" type="button">Másik jóslat</button>
+              <button class="action-btn" id="copyBtn" type="button">Másolás</button>
+            </div>
+          </div>
+        </section>
       </div>
+
+      <!-- Past readings -->
+      <details class="history" id="history" hidden>
+        <summary>Korábbi jóslatok</summary>
+        <ul class="history-list" id="historyList"></ul>
+      </details>
     </main>
 
     <footer id="footer">
       <p>oracle.gyoma.org</p>
     </footer>
   </div>
+
   <script src="js/app.js"></script>
 </body>
 </html>

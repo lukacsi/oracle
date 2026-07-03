@@ -4,7 +4,15 @@
 
 ## How it works
 
-Type a question, click **Kérdezd a Jósdát**. The crystal orb shakes, then reveals a random Hungarian saying from a database of **12,679 entries** — each with its dictionary definition.
+Type a question, click **Kérdezd a Jósdát**. The crystal orb charges up, then reveals a random Hungarian saying from a database of **12,679 entries** — each with its dictionary definition.
+
+### Features
+
+- **Celestial UI** — particle sky (twinkling stars + rising embers), glass orb with inner nebula, counter-rotating rovás rune rings
+- **Rovásírás mode** — toggle transliterates answers into Old Hungarian script (persisted in `localStorage`)
+- **Másik jóslat** — redraw without retyping; **Másolás** — copy the reading to clipboard
+- **Korábbi jóslatok** — last 5 readings kept in `localStorage`
+- **Accessible** — `prefers-reduced-motion` support, live regions, keyboard focus states
 
 ## Data source
 
@@ -26,7 +34,7 @@ The extraction script parses the PDF's bold headwords and their definitions usin
 ```
 oracle/
 ├── index.html          # page structure
-├── css/style.css       # atmospheric dark/gold theme
+├── css/style.css       # celestial indigo/gold theme
 ├── js/app.js           # oracle logic (fetch, randomize, display)
 ├── data/proverbs.json  # 12,679 entries {proverb, meaning}
 ├── Dockerfile          # nginx static server
